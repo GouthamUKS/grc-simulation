@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GRC Simulation — Cloud Security Risk Assessment</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+<!-- ─── Header ──────────────────────────────────────── -->
+<header class="header">
+  <div class="container">
+    <div class="header-inner">
+      <div class="header-title">
+        <div class="header-logo">G</div>
+        <div>
+          <h1>GRC Simulation</h1>
+          <div class="header-sub">Cloud Security Risk Assessment &middot; Azure</div>
+        </div>
+      </div>
+      <div class="header-meta">
+        <span id="mode-badge" class="badge badge-mock">
+          <span class="badge-dot"></span>
+          <span id="mode-text">MOCK</span>
+        </span>
+        <span id="timestamp" class="timestamp">Loading...</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ─── Main ─────────────────────────────────────────── -->
+<main class="main">
+  <div class="container">
+
+    <!-- Loading state -->
+    <div id="loading-state" class="loading">
+      <div class="loading-spinner"></div>
+      <p>Loading assessment data...</p>
+    </div>
+
+    <!-- Error state -->
+    <div id="error-state" class="error-msg" style="display:none;"></div>
+
+    <!-- Dashboard content (hidden until loaded) -->
+    <div id="dashboard-content" style="display:none;">
+
+      <!-- Overview stats bar -->
+      <div class="overview-bar fade-in">
+        <div class="overview-stat">
+          <span class="overview-stat-label">Total Resources</span>
+          <span class="overview-stat-value mono" id="total-resources">—</span>
+        </div>
+        <div class="overview-stat">
+          <span class="overview-stat-label">Controls Checked</span>
+          <span class="overview-stat-value mono" id="total-controls">—</span>
+        </div>
+        <div class="overview-stat">
+          <span class="overview-stat-label">Failed Checks</span>
+          <span class="overview-stat-value mono" id="total-findings" style="color:var(--warning)">—</span>
+        </div>
+        <div class="overview-stat">
+          <span class="overview-stat-label">Passing Checks</span>
+          <span class="overview-stat-value mono" id="pass-count" style="color:var(--safe)">—</span>
+        </div>
+        <div class="overview-stat">
+          <span class="overview-stat-label">Compliance Score</span>
+          <span class="overview-stat-value mono" id="compliance-score-bar">—</span>
+        </div>
+        <div class="overview-stat">
+          <span class="overview-stat-label">Exposure Gaps</span>
+          <span class="overview-stat-value mono" id="gap-count">—</span>
+        </div>
+      </div>
+
+      <!-- Score ring + finding cards -->
+      <div class="score-section fade-in">
+        <!-- Compliance score ring -->
+        <div class="score-ring-wrapper">
+          <svg class="score-ring-svg" width="160" height="160" viewBox="0 0 160 160">
+            <circle class="score-ring-track" cx="80" cy="80" r="64" />
+            <circle
+              id="score-ring-fill"
+              class="score-ring-fill"
+              cx="80" cy="80" r="64"
+              stroke="#00d4ff"
+              stroke-dasharray="402.12"
+              stroke-dashoffset="402.12"
+            />
+          </svg>
+          <div class="score-ring-label">
+            <span class="score-value" id="compliance-score" style="color: var(--accent)">—</span>
+            <span class="score-label">Compliance</span>
+          </div>
+        </div>
+
+        <!-- Finding count cards -->
+        <div class="stat-cards">
+          <div class="stat-card critical">
+            <div class="stat-card-label">Critical</div>
+            <div class="stat-card-value mono" id="count-critical">—</div>
+          </div>
+          <div class="stat-card high">
+            <div class="stat-card-label">High</div>
+            <div class="stat-card-value mono" id="count-high">—</div>
+          </div>
+          <div class="stat-card medium">
+            <div class="stat-card-label">Medium</div>
+            <div class="stat-card-value mono" id="count-medium">—</div>
+          </div>
+          <div class="stat-card low">
+            <div class="stat-card-label">Low</div>
+            <div class="stat-card-value mono" id="count-low">—</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Top 5 Findings table -->
+      <div class="fade-in">
+        <h2 class="section-title">Top 5 Risk Findings</h2>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Resource</th>
+                <th>Control</th>
+                <th>Score</th>
+                <th>Risk Band</th>
+                <th>Priority</th>
+              </tr>
+            </thead>
+            <tbody id="top-findings-body">
+              <tr><td colspan="6" style="text-align:center;color:var(--text-muted);">Loading...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Exposure Gaps -->
+      <div class="fade-in">
+        <h2 class="section-title">Exposure Gaps</h2>
+        <div id="gap-list" class="gap-list">
+          <p style="color:var(--text-muted);font-size:0.8rem;">Loading...</p>
+        </div>
+      </div>
+
+    </div><!-- /dashboard-content -->
+  </div>
+</main>
+
+<!-- ─── Footer ───────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container">
+    <p class="footer-text">
+      <span>GRC Simulation</span> &mdash;
+      For portfolio use only. Read-only assessment. No Azure resources were modified.
+      &mdash; CIS Azure Benchmark v2.0
+    </p>
+  </div>
+</footer>
+
+<script>
+  const CIRCUMFERENCE = 2 * Math.PI * 64; // 402.12
+
+  function formatTimestamp(iso) {
+    try {
+      const d = new Date(iso);
+      return d.toLocaleString('en-GB', {
+        year: 'numeric', month: 'short', day: '2-digit',
+        hour: '2-digit', minute: '2-digit', second: '2-digit',
+        timeZoneName: 'short'
+      });
+    } catch {
+      return iso;
+    }
+  }
+
+  function scoreColour(score) {
+    if (score >= 80) return 'var(--safe)';
+    if (score >= 60) return 'var(--medium)';
+    return 'var(--warning)';
+  }
+
+  function animateRing(score) {
+    const fill = document.getElementById('score-ring-fill');
+    const offset = CIRCUMFERENCE - (score / 100) * CIRCUMFERENCE;
+    fill.style.stroke = scoreColour(score);
+    fill.style.strokeDashoffset = offset;
+  }
+
+  function renderTopFindings(findings) {
+    const tbody = document.getElementById('top-findings-body');
+    if (!findings || findings.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--text-muted);">No findings</td></tr>';
+      return;
+    }
+    tbody.innerHTML = findings.map(f => `
+      <tr>
+        <td class="mono" style="color:var(--text-muted)">${f.priority}</td>
+        <td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="${f.resource_name}">${f.resource_name}</td>
+        <td class="mono" style="color:var(--accent)">${f.control_id}</td>
+        <td class="mono" style="color:var(--warning)">${f.final_score}</td>
+        <td><span class="band-chip band-${f.risk_band}">${f.risk_band}</span></td>
+        <td class="mono">${f.priority}</td>
+      </tr>
+    `).join('');
+  }
+
+  function renderGaps(gaps) {
+    const container = document.getElementById('gap-list');
+    if (!gaps || gaps.length === 0) {
+      container.innerHTML = '<p style="color:var(--text-muted);font-size:0.8rem;">No systemic exposure gaps identified.</p>';
+      return;
+    }
+    container.innerHTML = gaps.map(g => `
+      <div class="gap-item">
+        <span class="gap-rank">#${g.priority_rank}</span>
+        <div class="gap-info">
+          <div class="gap-title">${g.title}</div>
+          <div class="gap-meta">${g.section} &middot; ${g.control_id} &middot; ${g.finding_count} finding${g.finding_count !== 1 ? 's' : ''}</div>
+        </div>
+        <span class="gap-score">${g.aggregate_score}</span>
+      </div>
+    `).join('');
+  }
+
+  async function loadDashboard() {
+    const loadingEl = document.getElementById('loading-state');
+    const errorEl = document.getElementById('error-state');
+    const contentEl = document.getElementById('dashboard-content');
+
+    try {
+      const resp = await fetch('/api/summary');
+      if (!resp.ok) {
+        throw new Error(`API returned ${resp.status}: ${await resp.text()}`);
+      }
+      const data = await resp.json();
+
+      // Mode badge
+      const modeText = document.getElementById('mode-text');
+      const modeBadge = document.getElementById('mode-badge');
+      if (data.mode === 'azure') {
+        modeText.textContent = 'LIVE AZURE';
+        modeBadge.className = 'badge badge-live';
+      } else {
+        modeText.textContent = 'MOCK';
+        modeBadge.className = 'badge badge-mock';
+      }
+
+      // Timestamp
+      document.getElementById('timestamp').textContent = formatTimestamp(data.generated_at);
+
+      // Compliance score (declared first — used by both ring and overview bar)
+      const score = data.compliance_score ?? 0;
+
+      // Overview bar
+      const findings = data.findings || {};
+      const totalFindings = (findings.critical || 0) + (findings.high || 0) + (findings.medium || 0) + (findings.low || 0);
+      document.getElementById('total-resources').textContent = data.total_resources ?? '—';
+      document.getElementById('total-controls').textContent = data.total_controls_checked ?? '—';
+      document.getElementById('total-findings').textContent = totalFindings;
+      document.getElementById('pass-count').textContent = findings.pass ?? '—';
+      document.getElementById('gap-count').textContent = (data.exposure_gaps || []).length;
+
+      // Compliance score in overview bar — coloured to match ring
+      const scoreBarEl = document.getElementById('compliance-score-bar');
+      scoreBarEl.textContent = score + '%';
+      scoreBarEl.style.color = scoreColour(score);
+
+      // Compliance score ring
+      const scoreEl = document.getElementById('compliance-score');
+      scoreEl.textContent = score + '%';
+      scoreEl.style.color = scoreColour(score);
+      animateRing(score);
+
+      // Finding counts
+      document.getElementById('count-critical').textContent = findings.critical ?? 0;
+      document.getElementById('count-high').textContent = findings.high ?? 0;
+      document.getElementById('count-medium').textContent = findings.medium ?? 0;
+      document.getElementById('count-low').textContent = findings.low ?? 0;
+
+      // Tables
+      renderTopFindings(data.top_5_findings || []);
+      renderGaps(data.exposure_gaps || []);
+
+      loadingEl.style.display = 'none';
+      contentEl.style.display = 'block';
+
+    } catch (err) {
+      loadingEl.style.display = 'none';
+      errorEl.style.display = 'block';
+      errorEl.textContent = 'Error loading data: ' + err.message + '. Run python cli.py --mode mock first.';
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', loadDashboard);
+</script>
+</body>
+</html>

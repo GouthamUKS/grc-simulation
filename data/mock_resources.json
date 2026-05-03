@@ -1,0 +1,857 @@
+[
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-prod/providers/Microsoft.Storage/storageAccounts/stprodapp001",
+    "name": "stprodapp001",
+    "type": "Microsoft.Storage/storageAccounts",
+    "location": "uksouth",
+    "tags": {"environment": "production", "owner": "platform-team"},
+    "criticality": "high",
+    "properties": {
+      "publicNetworkAccess": "Enabled",
+      "httpsOnly": false,
+      "minimumTlsVersion": "TLS1_0",
+      "allowBlobPublicAccess": true,
+      "softDeleteEnabled": false,
+      "networkAcls": {"defaultAction": "Allow"},
+      "supportsHttpsTrafficOnly": false
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-prod/providers/Microsoft.Storage/storageAccounts/stprodlogs002",
+    "name": "stprodlogs002",
+    "type": "Microsoft.Storage/storageAccounts",
+    "location": "uksouth",
+    "tags": {"environment": "production", "owner": "security-team"},
+    "criticality": "critical",
+    "properties": {
+      "publicNetworkAccess": "Disabled",
+      "httpsOnly": true,
+      "minimumTlsVersion": "TLS1_2",
+      "allowBlobPublicAccess": false,
+      "softDeleteEnabled": true,
+      "networkAcls": {"defaultAction": "Deny"},
+      "supportsHttpsTrafficOnly": true
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-dev/providers/Microsoft.Storage/storageAccounts/stdevdata003",
+    "name": "stdevdata003",
+    "type": "Microsoft.Storage/storageAccounts",
+    "location": "westeurope",
+    "tags": {"environment": "development", "owner": "dev-team"},
+    "criticality": "low",
+    "properties": {
+      "publicNetworkAccess": "Enabled",
+      "httpsOnly": false,
+      "minimumTlsVersion": "TLS1_0",
+      "allowBlobPublicAccess": true,
+      "softDeleteEnabled": false,
+      "networkAcls": {"defaultAction": "Allow"},
+      "supportsHttpsTrafficOnly": false
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-prod/providers/Microsoft.Storage/storageAccounts/stprodbackup004",
+    "name": "stprodbackup004",
+    "type": "Microsoft.Storage/storageAccounts",
+    "location": "uksouth",
+    "tags": {"environment": "production", "owner": "ops-team"},
+    "criticality": "critical",
+    "properties": {
+      "publicNetworkAccess": "Disabled",
+      "httpsOnly": true,
+      "minimumTlsVersion": "TLS1_2",
+      "allowBlobPublicAccess": false,
+      "softDeleteEnabled": true,
+      "networkAcls": {"defaultAction": "Deny"},
+      "supportsHttpsTrafficOnly": true
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-staging/providers/Microsoft.Storage/storageAccounts/ststagingfn005",
+    "name": "ststagingfn005",
+    "type": "Microsoft.Storage/storageAccounts",
+    "location": "northeurope",
+    "tags": {"environment": "staging", "owner": "dev-team"},
+    "criticality": "medium",
+    "properties": {
+      "publicNetworkAccess": "Enabled",
+      "httpsOnly": true,
+      "minimumTlsVersion": "TLS1_1",
+      "allowBlobPublicAccess": false,
+      "softDeleteEnabled": false,
+      "networkAcls": {"defaultAction": "Allow"},
+      "supportsHttpsTrafficOnly": true
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-prod/providers/Microsoft.Storage/storageAccounts/stprodstatic006",
+    "name": "stprodstatic006",
+    "type": "Microsoft.Storage/storageAccounts",
+    "location": "uksouth",
+    "tags": {"environment": "production", "owner": "web-team"},
+    "criticality": "medium",
+    "properties": {
+      "publicNetworkAccess": "Enabled",
+      "httpsOnly": true,
+      "minimumTlsVersion": "TLS1_2",
+      "allowBlobPublicAccess": true,
+      "softDeleteEnabled": false,
+      "networkAcls": {"defaultAction": "Allow"},
+      "supportsHttpsTrafficOnly": true
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-analytics/providers/Microsoft.Storage/storageAccounts/stanalyticsraw007",
+    "name": "stanalyticsraw007",
+    "type": "Microsoft.Storage/storageAccounts",
+    "location": "westeurope",
+    "tags": {"environment": "production", "owner": "analytics-team"},
+    "criticality": "high",
+    "properties": {
+      "publicNetworkAccess": "Enabled",
+      "httpsOnly": false,
+      "minimumTlsVersion": "TLS1_0",
+      "allowBlobPublicAccess": true,
+      "softDeleteEnabled": false,
+      "networkAcls": {"defaultAction": "Allow"},
+      "supportsHttpsTrafficOnly": false
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-prod/providers/Microsoft.Storage/storageAccounts/stproddatalake008",
+    "name": "stproddatalake008",
+    "type": "Microsoft.Storage/storageAccounts",
+    "location": "uksouth",
+    "tags": {"environment": "production", "owner": "data-team"},
+    "criticality": "critical",
+    "properties": {
+      "publicNetworkAccess": "Disabled",
+      "httpsOnly": true,
+      "minimumTlsVersion": "TLS1_2",
+      "allowBlobPublicAccess": false,
+      "softDeleteEnabled": true,
+      "networkAcls": {"defaultAction": "Deny"},
+      "supportsHttpsTrafficOnly": true
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-dev/providers/Microsoft.Storage/storageAccounts/stdevartifacts009",
+    "name": "stdevartifacts009",
+    "type": "Microsoft.Storage/storageAccounts",
+    "location": "westeurope",
+    "tags": {"environment": "development", "owner": "dev-team"},
+    "criticality": "low",
+    "properties": {
+      "publicNetworkAccess": "Enabled",
+      "httpsOnly": true,
+      "minimumTlsVersion": "TLS1_2",
+      "allowBlobPublicAccess": false,
+      "softDeleteEnabled": false,
+      "networkAcls": {"defaultAction": "Allow"},
+      "supportsHttpsTrafficOnly": true
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-prod/providers/Microsoft.Storage/storageAccounts/stprodarchive010",
+    "name": "stprodarchive010",
+    "type": "Microsoft.Storage/storageAccounts",
+    "location": "uksouth",
+    "tags": {"environment": "production", "owner": "compliance-team"},
+    "criticality": "high",
+    "properties": {
+      "publicNetworkAccess": "Disabled",
+      "httpsOnly": true,
+      "minimumTlsVersion": "TLS1_2",
+      "allowBlobPublicAccess": false,
+      "softDeleteEnabled": true,
+      "networkAcls": {"defaultAction": "Deny"},
+      "supportsHttpsTrafficOnly": true
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-prod/providers/Microsoft.Compute/virtualMachines/vm-prod-web-001",
+    "name": "vm-prod-web-001",
+    "type": "Microsoft.Compute/virtualMachines",
+    "location": "uksouth",
+    "tags": {"environment": "production", "owner": "web-team"},
+    "criticality": "high",
+    "properties": {
+      "osType": "Linux",
+      "vmSize": "Standard_D2s_v3",
+      "diskEncryptionEnabled": false,
+      "managedIdentityEnabled": false,
+      "antimalwareEnabled": false,
+      "autoUpdateEnabled": false,
+      "bootDiagnosticsEnabled": false,
+      "osProfile": {"allowExtensionOperations": true}
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-prod/providers/Microsoft.Compute/virtualMachines/vm-prod-app-002",
+    "name": "vm-prod-app-002",
+    "type": "Microsoft.Compute/virtualMachines",
+    "location": "uksouth",
+    "tags": {"environment": "production", "owner": "platform-team"},
+    "criticality": "critical",
+    "properties": {
+      "osType": "Linux",
+      "vmSize": "Standard_D4s_v3",
+      "diskEncryptionEnabled": true,
+      "managedIdentityEnabled": true,
+      "antimalwareEnabled": true,
+      "autoUpdateEnabled": true,
+      "bootDiagnosticsEnabled": true,
+      "osProfile": {"allowExtensionOperations": true}
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-prod/providers/Microsoft.Compute/virtualMachines/vm-prod-db-003",
+    "name": "vm-prod-db-003",
+    "type": "Microsoft.Compute/virtualMachines",
+    "location": "uksouth",
+    "tags": {"environment": "production", "owner": "dba-team"},
+    "criticality": "critical",
+    "properties": {
+      "osType": "Linux",
+      "vmSize": "Standard_E8s_v3",
+      "diskEncryptionEnabled": true,
+      "managedIdentityEnabled": true,
+      "antimalwareEnabled": true,
+      "autoUpdateEnabled": true,
+      "bootDiagnosticsEnabled": true,
+      "osProfile": {"allowExtensionOperations": true}
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-dev/providers/Microsoft.Compute/virtualMachines/vm-dev-build-004",
+    "name": "vm-dev-build-004",
+    "type": "Microsoft.Compute/virtualMachines",
+    "location": "westeurope",
+    "tags": {"environment": "development", "owner": "dev-team"},
+    "criticality": "low",
+    "properties": {
+      "osType": "Windows",
+      "vmSize": "Standard_B2s",
+      "diskEncryptionEnabled": false,
+      "managedIdentityEnabled": false,
+      "antimalwareEnabled": false,
+      "autoUpdateEnabled": false,
+      "bootDiagnosticsEnabled": false,
+      "osProfile": {"allowExtensionOperations": true}
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-staging/providers/Microsoft.Compute/virtualMachines/vm-staging-api-005",
+    "name": "vm-staging-api-005",
+    "type": "Microsoft.Compute/virtualMachines",
+    "location": "northeurope",
+    "tags": {"environment": "staging", "owner": "api-team"},
+    "criticality": "medium",
+    "properties": {
+      "osType": "Linux",
+      "vmSize": "Standard_D2s_v3",
+      "diskEncryptionEnabled": false,
+      "managedIdentityEnabled": true,
+      "antimalwareEnabled": false,
+      "autoUpdateEnabled": true,
+      "bootDiagnosticsEnabled": true,
+      "osProfile": {"allowExtensionOperations": true}
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-prod/providers/Microsoft.Compute/virtualMachines/vm-prod-jump-006",
+    "name": "vm-prod-jump-006",
+    "type": "Microsoft.Compute/virtualMachines",
+    "location": "uksouth",
+    "tags": {"environment": "production", "owner": "security-team"},
+    "criticality": "critical",
+    "properties": {
+      "osType": "Windows",
+      "vmSize": "Standard_D2s_v3",
+      "diskEncryptionEnabled": true,
+      "managedIdentityEnabled": false,
+      "antimalwareEnabled": true,
+      "autoUpdateEnabled": true,
+      "bootDiagnosticsEnabled": true,
+      "osProfile": {"allowExtensionOperations": true}
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-prod/providers/Microsoft.Compute/virtualMachines/vm-prod-analytics-007",
+    "name": "vm-prod-analytics-007",
+    "type": "Microsoft.Compute/virtualMachines",
+    "location": "uksouth",
+    "tags": {"environment": "production", "owner": "analytics-team"},
+    "criticality": "high",
+    "properties": {
+      "osType": "Linux",
+      "vmSize": "Standard_F8s_v2",
+      "diskEncryptionEnabled": false,
+      "managedIdentityEnabled": true,
+      "antimalwareEnabled": false,
+      "autoUpdateEnabled": false,
+      "bootDiagnosticsEnabled": true,
+      "osProfile": {"allowExtensionOperations": true}
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-dev/providers/Microsoft.Compute/virtualMachines/vm-dev-test-008",
+    "name": "vm-dev-test-008",
+    "type": "Microsoft.Compute/virtualMachines",
+    "location": "westeurope",
+    "tags": {"environment": "development", "owner": "qa-team"},
+    "criticality": "low",
+    "properties": {
+      "osType": "Linux",
+      "vmSize": "Standard_B1s",
+      "diskEncryptionEnabled": false,
+      "managedIdentityEnabled": false,
+      "antimalwareEnabled": false,
+      "autoUpdateEnabled": false,
+      "bootDiagnosticsEnabled": false,
+      "osProfile": {"allowExtensionOperations": true}
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-prod/providers/Microsoft.Compute/virtualMachines/vm-prod-monitor-009",
+    "name": "vm-prod-monitor-009",
+    "type": "Microsoft.Compute/virtualMachines",
+    "location": "uksouth",
+    "tags": {"environment": "production", "owner": "ops-team"},
+    "criticality": "high",
+    "properties": {
+      "osType": "Linux",
+      "vmSize": "Standard_D2s_v3",
+      "diskEncryptionEnabled": true,
+      "managedIdentityEnabled": true,
+      "antimalwareEnabled": true,
+      "autoUpdateEnabled": true,
+      "bootDiagnosticsEnabled": true,
+      "osProfile": {"allowExtensionOperations": true}
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-prod/providers/Microsoft.Compute/virtualMachines/vm-prod-cache-010",
+    "name": "vm-prod-cache-010",
+    "type": "Microsoft.Compute/virtualMachines",
+    "location": "uksouth",
+    "tags": {"environment": "production", "owner": "platform-team"},
+    "criticality": "medium",
+    "properties": {
+      "osType": "Linux",
+      "vmSize": "Standard_D2s_v3",
+      "diskEncryptionEnabled": false,
+      "managedIdentityEnabled": false,
+      "antimalwareEnabled": false,
+      "autoUpdateEnabled": false,
+      "bootDiagnosticsEnabled": false,
+      "osProfile": {"allowExtensionOperations": true}
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-prod/providers/Microsoft.Network/networkSecurityGroups/nsg-prod-web",
+    "name": "nsg-prod-web",
+    "type": "Microsoft.Network/networkSecurityGroups",
+    "location": "uksouth",
+    "tags": {"environment": "production", "owner": "network-team"},
+    "criticality": "high",
+    "properties": {
+      "securityRules": [
+        {"name": "Allow-All-Inbound", "direction": "Inbound", "access": "Allow", "protocol": "*", "sourceAddressPrefix": "*", "destinationPortRange": "*", "priority": 100}
+      ],
+      "sshAccessFromInternet": true,
+      "rdpAccessFromInternet": false,
+      "flowLogsEnabled": false
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-prod/providers/Microsoft.Network/networkSecurityGroups/nsg-prod-app",
+    "name": "nsg-prod-app",
+    "type": "Microsoft.Network/networkSecurityGroups",
+    "location": "uksouth",
+    "tags": {"environment": "production", "owner": "network-team"},
+    "criticality": "high",
+    "properties": {
+      "securityRules": [
+        {"name": "Allow-HTTPS", "direction": "Inbound", "access": "Allow", "protocol": "Tcp", "sourceAddressPrefix": "*", "destinationPortRange": "443", "priority": 100},
+        {"name": "Deny-All", "direction": "Inbound", "access": "Deny", "protocol": "*", "sourceAddressPrefix": "*", "destinationPortRange": "*", "priority": 4096}
+      ],
+      "sshAccessFromInternet": false,
+      "rdpAccessFromInternet": false,
+      "flowLogsEnabled": true
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-prod/providers/Microsoft.Network/networkSecurityGroups/nsg-prod-db",
+    "name": "nsg-prod-db",
+    "type": "Microsoft.Network/networkSecurityGroups",
+    "location": "uksouth",
+    "tags": {"environment": "production", "owner": "dba-team"},
+    "criticality": "critical",
+    "properties": {
+      "securityRules": [
+        {"name": "Allow-SQL", "direction": "Inbound", "access": "Allow", "protocol": "Tcp", "sourceAddressPrefix": "10.0.0.0/8", "destinationPortRange": "1433", "priority": 100},
+        {"name": "Deny-All", "direction": "Inbound", "access": "Deny", "protocol": "*", "sourceAddressPrefix": "*", "destinationPortRange": "*", "priority": 4096}
+      ],
+      "sshAccessFromInternet": false,
+      "rdpAccessFromInternet": false,
+      "flowLogsEnabled": true
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-dev/providers/Microsoft.Network/networkSecurityGroups/nsg-dev-all",
+    "name": "nsg-dev-all",
+    "type": "Microsoft.Network/networkSecurityGroups",
+    "location": "westeurope",
+    "tags": {"environment": "development", "owner": "dev-team"},
+    "criticality": "low",
+    "properties": {
+      "securityRules": [
+        {"name": "Allow-All", "direction": "Inbound", "access": "Allow", "protocol": "*", "sourceAddressPrefix": "*", "destinationPortRange": "*", "priority": 100}
+      ],
+      "sshAccessFromInternet": true,
+      "rdpAccessFromInternet": true,
+      "flowLogsEnabled": false
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-staging/providers/Microsoft.Network/networkSecurityGroups/nsg-staging-web",
+    "name": "nsg-staging-web",
+    "type": "Microsoft.Network/networkSecurityGroups",
+    "location": "northeurope",
+    "tags": {"environment": "staging", "owner": "dev-team"},
+    "criticality": "medium",
+    "properties": {
+      "securityRules": [
+        {"name": "Allow-HTTP", "direction": "Inbound", "access": "Allow", "protocol": "Tcp", "sourceAddressPrefix": "*", "destinationPortRange": "80", "priority": 100},
+        {"name": "Allow-SSH", "direction": "Inbound", "access": "Allow", "protocol": "Tcp", "sourceAddressPrefix": "*", "destinationPortRange": "22", "priority": 200}
+      ],
+      "sshAccessFromInternet": true,
+      "rdpAccessFromInternet": false,
+      "flowLogsEnabled": false
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-prod/providers/Microsoft.Network/networkSecurityGroups/nsg-prod-mgmt",
+    "name": "nsg-prod-mgmt",
+    "type": "Microsoft.Network/networkSecurityGroups",
+    "location": "uksouth",
+    "tags": {"environment": "production", "owner": "security-team"},
+    "criticality": "critical",
+    "properties": {
+      "securityRules": [
+        {"name": "Allow-VPN", "direction": "Inbound", "access": "Allow", "protocol": "Tcp", "sourceAddressPrefix": "10.100.0.0/16", "destinationPortRange": "22", "priority": 100},
+        {"name": "Deny-All", "direction": "Inbound", "access": "Deny", "protocol": "*", "sourceAddressPrefix": "*", "destinationPortRange": "*", "priority": 4096}
+      ],
+      "sshAccessFromInternet": false,
+      "rdpAccessFromInternet": false,
+      "flowLogsEnabled": true
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-analytics/providers/Microsoft.Network/networkSecurityGroups/nsg-analytics",
+    "name": "nsg-analytics",
+    "type": "Microsoft.Network/networkSecurityGroups",
+    "location": "westeurope",
+    "tags": {"environment": "production", "owner": "analytics-team"},
+    "criticality": "medium",
+    "properties": {
+      "securityRules": [
+        {"name": "Allow-All-Inbound", "direction": "Inbound", "access": "Allow", "protocol": "*", "sourceAddressPrefix": "*", "destinationPortRange": "*", "priority": 100}
+      ],
+      "sshAccessFromInternet": true,
+      "rdpAccessFromInternet": false,
+      "flowLogsEnabled": false
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-prod/providers/Microsoft.Network/networkSecurityGroups/nsg-prod-aks",
+    "name": "nsg-prod-aks",
+    "type": "Microsoft.Network/networkSecurityGroups",
+    "location": "uksouth",
+    "tags": {"environment": "production", "owner": "platform-team"},
+    "criticality": "high",
+    "properties": {
+      "securityRules": [
+        {"name": "Allow-API-Server", "direction": "Inbound", "access": "Allow", "protocol": "Tcp", "sourceAddressPrefix": "10.0.0.0/8", "destinationPortRange": "443", "priority": 100},
+        {"name": "Deny-All", "direction": "Inbound", "access": "Deny", "protocol": "*", "sourceAddressPrefix": "*", "destinationPortRange": "*", "priority": 4096}
+      ],
+      "sshAccessFromInternet": false,
+      "rdpAccessFromInternet": false,
+      "flowLogsEnabled": true
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-prod/providers/Microsoft.KeyVault/vaults/kv-prod-secrets",
+    "name": "kv-prod-secrets",
+    "type": "Microsoft.KeyVault/vaults",
+    "location": "uksouth",
+    "tags": {"environment": "production", "owner": "security-team"},
+    "criticality": "critical",
+    "properties": {
+      "enableSoftDelete": true,
+      "enablePurgeProtection": true,
+      "publicNetworkAccess": "Disabled",
+      "enableRbacAuthorization": true,
+      "networkAcls": {"defaultAction": "Deny"},
+      "diagnosticLogsEnabled": true
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-prod/providers/Microsoft.KeyVault/vaults/kv-prod-certs",
+    "name": "kv-prod-certs",
+    "type": "Microsoft.KeyVault/vaults",
+    "location": "uksouth",
+    "tags": {"environment": "production", "owner": "platform-team"},
+    "criticality": "critical",
+    "properties": {
+      "enableSoftDelete": true,
+      "enablePurgeProtection": false,
+      "publicNetworkAccess": "Enabled",
+      "enableRbacAuthorization": false,
+      "networkAcls": {"defaultAction": "Allow"},
+      "diagnosticLogsEnabled": false
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-staging/providers/Microsoft.KeyVault/vaults/kv-staging-app",
+    "name": "kv-staging-app",
+    "type": "Microsoft.KeyVault/vaults",
+    "location": "northeurope",
+    "tags": {"environment": "staging", "owner": "dev-team"},
+    "criticality": "medium",
+    "properties": {
+      "enableSoftDelete": false,
+      "enablePurgeProtection": false,
+      "publicNetworkAccess": "Enabled",
+      "enableRbacAuthorization": false,
+      "networkAcls": {"defaultAction": "Allow"},
+      "diagnosticLogsEnabled": false
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-dev/providers/Microsoft.KeyVault/vaults/kv-dev-keys",
+    "name": "kv-dev-keys",
+    "type": "Microsoft.KeyVault/vaults",
+    "location": "westeurope",
+    "tags": {"environment": "development", "owner": "dev-team"},
+    "criticality": "low",
+    "properties": {
+      "enableSoftDelete": false,
+      "enablePurgeProtection": false,
+      "publicNetworkAccess": "Enabled",
+      "enableRbacAuthorization": false,
+      "networkAcls": {"defaultAction": "Allow"},
+      "diagnosticLogsEnabled": false
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-prod/providers/Microsoft.KeyVault/vaults/kv-prod-infra",
+    "name": "kv-prod-infra",
+    "type": "Microsoft.KeyVault/vaults",
+    "location": "uksouth",
+    "tags": {"environment": "production", "owner": "ops-team"},
+    "criticality": "high",
+    "properties": {
+      "enableSoftDelete": true,
+      "enablePurgeProtection": true,
+      "publicNetworkAccess": "Disabled",
+      "enableRbacAuthorization": true,
+      "networkAcls": {"defaultAction": "Deny"},
+      "diagnosticLogsEnabled": true
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-prod/providers/Microsoft.Sql/servers/sql-prod-primary",
+    "name": "sql-prod-primary",
+    "type": "Microsoft.Sql/servers",
+    "location": "uksouth",
+    "tags": {"environment": "production", "owner": "dba-team"},
+    "criticality": "critical",
+    "properties": {
+      "publicNetworkAccess": "Enabled",
+      "minimalTlsVersion": "1.0",
+      "administratorLogin": "sqladmin",
+      "auditingEnabled": false,
+      "advancedThreatProtectionEnabled": false,
+      "activeDirectoryAdminConfigured": false,
+      "vulnerabilityAssessmentEnabled": false
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-prod/providers/Microsoft.Sql/servers/sql-prod-replica",
+    "name": "sql-prod-replica",
+    "type": "Microsoft.Sql/servers",
+    "location": "northeurope",
+    "tags": {"environment": "production", "owner": "dba-team"},
+    "criticality": "critical",
+    "properties": {
+      "publicNetworkAccess": "Disabled",
+      "minimalTlsVersion": "1.2",
+      "administratorLogin": "sqladmin",
+      "auditingEnabled": true,
+      "advancedThreatProtectionEnabled": true,
+      "activeDirectoryAdminConfigured": true,
+      "vulnerabilityAssessmentEnabled": true
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-staging/providers/Microsoft.Sql/servers/sql-staging",
+    "name": "sql-staging",
+    "type": "Microsoft.Sql/servers",
+    "location": "westeurope",
+    "tags": {"environment": "staging", "owner": "dev-team"},
+    "criticality": "medium",
+    "properties": {
+      "publicNetworkAccess": "Enabled",
+      "minimalTlsVersion": "1.1",
+      "administratorLogin": "sqladmin",
+      "auditingEnabled": false,
+      "advancedThreatProtectionEnabled": false,
+      "activeDirectoryAdminConfigured": false,
+      "vulnerabilityAssessmentEnabled": false
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-analytics/providers/Microsoft.Sql/servers/sql-analytics",
+    "name": "sql-analytics",
+    "type": "Microsoft.Sql/servers",
+    "location": "westeurope",
+    "tags": {"environment": "production", "owner": "analytics-team"},
+    "criticality": "high",
+    "properties": {
+      "publicNetworkAccess": "Enabled",
+      "minimalTlsVersion": "1.0",
+      "administratorLogin": "analyticsadmin",
+      "auditingEnabled": false,
+      "advancedThreatProtectionEnabled": false,
+      "activeDirectoryAdminConfigured": false,
+      "vulnerabilityAssessmentEnabled": false
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-dev/providers/Microsoft.Sql/servers/sql-dev",
+    "name": "sql-dev",
+    "type": "Microsoft.Sql/servers",
+    "location": "westeurope",
+    "tags": {"environment": "development", "owner": "dev-team"},
+    "criticality": "low",
+    "properties": {
+      "publicNetworkAccess": "Enabled",
+      "minimalTlsVersion": "1.0",
+      "administratorLogin": "devadmin",
+      "auditingEnabled": false,
+      "advancedThreatProtectionEnabled": false,
+      "activeDirectoryAdminConfigured": false,
+      "vulnerabilityAssessmentEnabled": false
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-prod/providers/Microsoft.Web/sites/app-prod-api",
+    "name": "app-prod-api",
+    "type": "Microsoft.Web/sites",
+    "location": "uksouth",
+    "tags": {"environment": "production", "owner": "api-team"},
+    "criticality": "critical",
+    "properties": {
+      "httpsOnly": true,
+      "minTlsVersion": "1.2",
+      "clientCertEnabled": true,
+      "remoteDebuggingEnabled": false,
+      "ftpsState": "Disabled",
+      "managedServiceIdentityEnabled": true,
+      "authEnabled": true
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-prod/providers/Microsoft.Web/sites/app-prod-frontend",
+    "name": "app-prod-frontend",
+    "type": "Microsoft.Web/sites",
+    "location": "uksouth",
+    "tags": {"environment": "production", "owner": "web-team"},
+    "criticality": "high",
+    "properties": {
+      "httpsOnly": false,
+      "minTlsVersion": "1.0",
+      "clientCertEnabled": false,
+      "remoteDebuggingEnabled": true,
+      "ftpsState": "AllAllowed",
+      "managedServiceIdentityEnabled": false,
+      "authEnabled": false
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-staging/providers/Microsoft.Web/sites/app-staging-api",
+    "name": "app-staging-api",
+    "type": "Microsoft.Web/sites",
+    "location": "northeurope",
+    "tags": {"environment": "staging", "owner": "api-team"},
+    "criticality": "medium",
+    "properties": {
+      "httpsOnly": false,
+      "minTlsVersion": "1.1",
+      "clientCertEnabled": false,
+      "remoteDebuggingEnabled": true,
+      "ftpsState": "AllAllowed",
+      "managedServiceIdentityEnabled": false,
+      "authEnabled": false
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-dev/providers/Microsoft.Web/sites/app-dev-portal",
+    "name": "app-dev-portal",
+    "type": "Microsoft.Web/sites",
+    "location": "westeurope",
+    "tags": {"environment": "development", "owner": "dev-team"},
+    "criticality": "low",
+    "properties": {
+      "httpsOnly": false,
+      "minTlsVersion": "1.0",
+      "clientCertEnabled": false,
+      "remoteDebuggingEnabled": true,
+      "ftpsState": "AllAllowed",
+      "managedServiceIdentityEnabled": false,
+      "authEnabled": false
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-prod/providers/Microsoft.Web/sites/app-prod-admin",
+    "name": "app-prod-admin",
+    "type": "Microsoft.Web/sites",
+    "location": "uksouth",
+    "tags": {"environment": "production", "owner": "platform-team"},
+    "criticality": "critical",
+    "properties": {
+      "httpsOnly": true,
+      "minTlsVersion": "1.2",
+      "clientCertEnabled": true,
+      "remoteDebuggingEnabled": false,
+      "ftpsState": "Disabled",
+      "managedServiceIdentityEnabled": true,
+      "authEnabled": true
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-prod/providers/Microsoft.Web/sites/app-prod-functions",
+    "name": "app-prod-functions",
+    "type": "Microsoft.Web/sites",
+    "location": "uksouth",
+    "tags": {"environment": "production", "owner": "platform-team"},
+    "criticality": "high",
+    "properties": {
+      "httpsOnly": false,
+      "minTlsVersion": "1.1",
+      "clientCertEnabled": false,
+      "remoteDebuggingEnabled": false,
+      "ftpsState": "FtpsOnly",
+      "managedServiceIdentityEnabled": true,
+      "authEnabled": false
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-prod/providers/Microsoft.ContainerService/managedClusters/aks-prod-main",
+    "name": "aks-prod-main",
+    "type": "Microsoft.ContainerService/managedClusters",
+    "location": "uksouth",
+    "tags": {"environment": "production", "owner": "platform-team"},
+    "criticality": "critical",
+    "properties": {
+      "rbacEnabled": true,
+      "aadIntegrationEnabled": true,
+      "networkPolicy": "azure",
+      "privateCluster": true,
+      "authorizedIpRanges": ["10.0.0.0/8"],
+      "podSecurityPolicyEnabled": true,
+      "auditLogsEnabled": true,
+      "nodeAutoUpgradeEnabled": true
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-staging/providers/Microsoft.ContainerService/managedClusters/aks-staging",
+    "name": "aks-staging",
+    "type": "Microsoft.ContainerService/managedClusters",
+    "location": "northeurope",
+    "tags": {"environment": "staging", "owner": "platform-team"},
+    "criticality": "medium",
+    "properties": {
+      "rbacEnabled": true,
+      "aadIntegrationEnabled": false,
+      "networkPolicy": "none",
+      "privateCluster": false,
+      "authorizedIpRanges": [],
+      "podSecurityPolicyEnabled": false,
+      "auditLogsEnabled": false,
+      "nodeAutoUpgradeEnabled": false
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-dev/providers/Microsoft.ContainerService/managedClusters/aks-dev",
+    "name": "aks-dev",
+    "type": "Microsoft.ContainerService/managedClusters",
+    "location": "westeurope",
+    "tags": {"environment": "development", "owner": "dev-team"},
+    "criticality": "low",
+    "properties": {
+      "rbacEnabled": false,
+      "aadIntegrationEnabled": false,
+      "networkPolicy": "none",
+      "privateCluster": false,
+      "authorizedIpRanges": [],
+      "podSecurityPolicyEnabled": false,
+      "auditLogsEnabled": false,
+      "nodeAutoUpgradeEnabled": false
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-prod/providers/Microsoft.DBforPostgreSQL/servers/psql-prod-main",
+    "name": "psql-prod-main",
+    "type": "Microsoft.DBforPostgreSQL/servers",
+    "location": "uksouth",
+    "tags": {"environment": "production", "owner": "dba-team"},
+    "criticality": "critical",
+    "properties": {
+      "publicNetworkAccess": "Disabled",
+      "sslEnforcement": "Enabled",
+      "minimalTlsVersion": "TLS1_2",
+      "infrastructureEncryption": "Enabled",
+      "backupRetentionDays": 35,
+      "geoRedundantBackup": "Enabled",
+      "auditLogsEnabled": true
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-staging/providers/Microsoft.DBforPostgreSQL/servers/psql-staging",
+    "name": "psql-staging",
+    "type": "Microsoft.DBforPostgreSQL/servers",
+    "location": "northeurope",
+    "tags": {"environment": "staging", "owner": "dev-team"},
+    "criticality": "medium",
+    "properties": {
+      "publicNetworkAccess": "Enabled",
+      "sslEnforcement": "Disabled",
+      "minimalTlsVersion": "TLS1_0",
+      "infrastructureEncryption": "Disabled",
+      "backupRetentionDays": 7,
+      "geoRedundantBackup": "Disabled",
+      "auditLogsEnabled": false
+    }
+  },
+  {
+    "id": "/subscriptions/mock-sub-001/resourceGroups/rg-dev/providers/Microsoft.DBforPostgreSQL/servers/psql-dev",
+    "name": "psql-dev",
+    "type": "Microsoft.DBforPostgreSQL/servers",
+    "location": "westeurope",
+    "tags": {"environment": "development", "owner": "dev-team"},
+    "criticality": "low",
+    "properties": {
+      "publicNetworkAccess": "Enabled",
+      "sslEnforcement": "Disabled",
+      "minimalTlsVersion": "TLS1_0",
+      "infrastructureEncryption": "Disabled",
+      "backupRetentionDays": 7,
+      "geoRedundantBackup": "Disabled",
+      "auditLogsEnabled": false
+    }
+  }
+]
